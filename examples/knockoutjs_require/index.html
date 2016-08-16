@@ -39,7 +39,34 @@
 			<p>Written by <a href="https://github.com/ashish01/knockoutjs-todos">Ashish Sharma</a>, <a href="http://knockmeout.net">Ryan Niemeyer</a> and <a href="https://twitter.com/loicknuchel">Loïc Knuchel</a></p>
 			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 		</footer>
-		<script src="node_modules/todomvc-common/base.js"></script>
-		<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+		<script src="node_modules/requirejs/require.js"></script>
+<script>
+			/*global require, window */
+			// Author: Loïc Knuchel <loicknuchel@gmail.com>
+			// Require.js allows us to configure shortcut alias
+			require.config({
+				paths: {
+					knockout: 'node_modules/knockout/build/output/knockout-latest'
+				}
+			});
+
+			require([
+				'knockout',
+				'js/config/global',
+				'js/viewmodels/todo',
+				'js/extends/handlers'
+			], function (ko, g, TodoViewModel) {
+				'use strict';
+
+				// var app_view = new AppView();
+				// check local storage for todos
+				var todos = ko.utils.parseJson(window.localStorage.getItem(g.localStorageItem));
+
+				// bind a new instance of our view model to the page
+				ko.applyBindings(new TodoViewModel(todos || []));
+
+			});
+
+</script>
 	</body>
 </html>

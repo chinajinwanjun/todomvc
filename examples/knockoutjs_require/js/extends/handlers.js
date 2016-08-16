@@ -2,7 +2,7 @@
 
 define([
 	'knockout',
-	'config/global'
+	'js/config/global'
 ], function (ko, g) {
 	'use strict';
 

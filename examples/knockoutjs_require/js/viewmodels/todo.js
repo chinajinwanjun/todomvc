@@ -2,13 +2,13 @@
 
 define([
 	'knockout',
-	'config/global',
-	'models/Todo'
+	'js/config/global',
+	'js/models/Todo'
 ], function (ko, g, Todo) {
 	'use strict';
 
 	// our main view model
-	var ViewModel = function (todos) {
+	return function (todos) {
 		var self = this;
 
 		// map array of passed in todos to an observableArray of Todo objects
@@ -114,5 +114,5 @@ define([
 		}); // save at most twice per second
 	};
 
-	return ViewModel;
+
 });
